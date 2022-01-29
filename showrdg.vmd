@@ -1,0 +1,20 @@
+proc rdg {} {
+#This script is used to draw sign(λ2)ρ colored molecular RDG isosurface
+#func1.cub, func2.cub should be presented in current folder
+
+color Display Background white
+axes location Off
+display depthcue off
+display rendermode GLSL
+
+mol new func1.cub
+mol addfile func2.cub
+mol delrep 0 top
+mol representation CPK 1.0 0.3 18.0 16.0
+mol addrep top
+mol representation Isosurface 0.50000 1 0 0 1 1
+mol color Volume 0
+mol addrep top
+mol scaleminmax top 1 -0.04 0.02
+color scale method BGR
+}

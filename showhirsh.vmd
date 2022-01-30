@@ -1,0 +1,52 @@
+proc hirshd {} {
+#This script is used to draw normalized contact distance d_norm colored molecular Hirshfeld isosurface
+#mapfunc.cub, surf.cub should be presented in current folder
+
+color scale method BWR
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+#light 3 on
+material change specular Translucent 0.200000
+material change diffuse Translucent 0.500000
+material change Opacity Translucent 0.850000
+
+set colorlow -0.6
+set colorhigh 0.6
+
+mol new mapfunc.cub
+mol addfile surf.cub
+mol modstyle 0 0 Licorice 0.200000 17.000000 17.000000
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.5 1 0 0 1 1
+mol modmaterial 1 0 Translucent
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 $colorlow $colorhigh
+}
+
+proc hirshr {} {
+#This script is used to draw electron density ρ colored molecular Hirshfeld isosurface
+#mapfunc.cub, surf.cub should be presented in current folder
+
+color scale method BWR
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+#light 3 on
+material change specular Translucent 0.200000
+material change diffuse Translucent 0.500000
+material change Opacity Translucent 0.850000
+
+set colorhigh 0.015
+
+mol new mapfunc.cub
+mol addfile surf.cub
+mol modstyle 0 0 Licorice 0.200000 17.000000 17.000000
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.5 1 0 0 1 1
+mol modmaterial 1 0 Translucent
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 0.0 $colorhigh
+}

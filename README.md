@@ -13,6 +13,7 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
     source showrdg.vmd
     source showigm.vmd
     source showanci.vmd
+    source showhirsh.vmd
     ```
 
 ## Basic Usage
@@ -30,6 +31,8 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
 | 12 ESP analysis    | `esppt`      | mol.pdb, vtx.pdb, surfanalysis.pdb        |
 | 12 ALIE analysis   | `alie`       | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | 12 LEA analysis    | `lea`        | mapfunc.cub, surf.cub, surfanalysis.pdb   |
+| 12 HS analysis     | `hirshd`     | mapfunc.cub, surf.cub                     |
+| 12 HS analysis     | `hirshr`     | mapfunc.cub, surf.cub                     |
 | 20 RDG analysis    | `rdg`        | func1.cub, func2.cub                      |
 | 20 IRI analysis    | `iri`        | func1.cub, func2.cub                      |
 | 20 DORI analysis   | `dori`       | func1.cub, func2.cub                      |

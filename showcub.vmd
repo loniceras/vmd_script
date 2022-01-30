@@ -1,7 +1,6 @@
-proc cub {filename {isoval 0.05}} {
-
-#default material
-set mater Glossy
+proc cub {filename} {
+#This script is used to draw cube isosurface
+#filename.cub should be presented in current folder
 
 color Display Background white
 axes location off
@@ -9,11 +8,9 @@ display depthcue off
 display rendermode GLSL
 light 3 on
 
-color Name C tan
+color Element C tan
 color change rgb tan 0.700000 0.560000 0.360000
-material change mirror Opaque 0.15
-material change outline Opaque 4.000000
-material change outlinewidth Opaque 0.5
+material change specular Opaque 0.300000
 material change ambient Glossy 0.1
 material change diffuse Glossy 0.600000
 material change opacity Glossy 0.75
@@ -23,27 +20,38 @@ foreach i [molinfo list] {
 mol delete $i
 }
 
+set isoval 0.05
+
 mol new $filename.cub
-mol modstyle 0 top CPK 0.800000 0.300000 22.000000 22.000000
+mol modstyle 0 top CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 top Element
 mol addrep top
 mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
 mol modcolor 1 top ColorID 12
-mol modmaterial 1 top $mater
+mol modmaterial 1 top Glossy
 mol addrep top
 mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
 mol modcolor 2 top ColorID 22
-mol modmaterial 2 top $mater
+mol modmaterial 2 top Glossy
 
-proc cubiso {isoval} {
+proc iso {isoval} {
     mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
     mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
-    }
 }
 
-proc cub2 {filename1 filename2 {isoval 0.05}} {
+proc style {stylenum} {
+    if {$stylenum=="1"} {
+        mol modmaterial 1 top Glossy
+        mol modmaterial 2 top Glossy}
+    if {$stylenum=="2"} {
+        mol modmaterial 1 top EdgyGlass
+        mol modmaterial 2 top EdgyGlass}
+}
+}
 
-#default material
-set mater Glossy
+proc cub2 {filename1 filename2} {
+#This script is used to draw cubes isosurface
+#filename1.cub, filename2.cub should be presented in current folder
 
 color Display Background white
 axes location off
@@ -51,11 +59,9 @@ display depthcue off
 display rendermode GLSL
 light 3 on
 
-color Name C tan
+color Element C tan
 color change rgb tan 0.700000 0.560000 0.360000
-material change mirror Opaque 0.15
-material change outline Opaque 4.000000
-material change outlinewidth Opaque 0.5
+material change specular Opaque 0.300000
 material change ambient Glossy 0.1
 material change diffuse Glossy 0.600000
 material change opacity Glossy 0.75
@@ -65,23 +71,32 @@ foreach i [molinfo list] {
 mol delete $i
 }
 
+set isoval 0.05
+
 mol new $filename1.cub
-mol modstyle 0 top CPK 0.800000 0.300000 22.000000 22.000000
+mol modstyle 0 top CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 top Element
 mol addrep top
 mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
 mol modcolor 1 top ColorID 12
-mol modmaterial 1 top $mater
+mol modmaterial 1 top Glossy
 
 mol new $filename2.cub
-mol modstyle 0 top CPK 0.800000 0.300000 22.000000 22.000000
+mol modstyle 0 top CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 top Element
 mol addrep top
 mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
 mol modcolor 1 top ColorID 22
-mol modmaterial 1 top $mater
+mol modmaterial 1 top Glossy
 
-proc cub2iso {isoval} {
+proc iso {isoval} {
     foreach i [molinfo list] {
     mol modstyle 1 $i Isosurface $isoval 0 0 0 1 1
     }
+}
+
+proc style {stylenum} {
+    if {$stylenum=="1"} {foreach i [molinfo list] {mol modmaterial 1 $i Glossy}}
+    if {$stylenum=="2"} {foreach i [molinfo list] {mol modmaterial 1 $i EdgyGlass}}
 }
 }

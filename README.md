@@ -12,6 +12,7 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
     source showalie.vmd
     source showrdg.vmd
     source showigm.vmd
+    source showanci.vmd
     ```
 
 ## Basic Usage
@@ -23,6 +24,7 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
 | Multiwfn Function  | Command      | Required Files                            |
 | ------------------ | ------------ | ----------------------------------------- |
 | Read cub file      | `cub xxx`    | xxx.cub                                   |
+| View orbitals      | `orb`        | orbital.cub                               |
 | 2  AIM analysis    | `aim`        | mol.pdb, CPs.pdb, paths.pdb               |
 | 12 ESP analysis    | `esp`        | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | 12 ESP analysis    | `esppt`      | mol.pdb, vtx.pdb, surfanalysis.pdb        |

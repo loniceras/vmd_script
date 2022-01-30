@@ -1,0 +1,47 @@
+proc orb {} {
+#This script is used to draw orbital isosurface
+#orbital.cub should be presented in current folder
+
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+light 3 on
+
+color Element C tan
+color change rgb tan 0.700000 0.560000 0.360000
+material change specular Opaque 0.300000
+material change ambient Glossy 0.1
+material change diffuse Glossy 0.600000
+material change opacity Glossy 0.75
+material change shininess Glossy 1.0
+
+set isoval 0.05
+set orbnum 0
+
+mol new orbital.cub
+mol modstyle 0 0 CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface $isoval $orbnum 0 0 1 1
+mol modmaterial 1 0 Glossy
+mol modcolor 1 0 ColorID 12
+mol addrep top
+mol modstyle 2 0 Isosurface -$isoval $orbnum 0 0 1 1
+mol modmaterial 2 0 Glossy
+mol modcolor 2 0 ColorID 22
+
+proc orb {isoval orbnum} {
+    mol modstyle 1 0 Isosurface $isoval $orbnum 0 0 1 1
+    mol modstyle 2 0 Isosurface -$isoval $orbnum 0 0 1 1
+}
+
+proc style {stylenum} {
+    if {$stylenum=="1"} {
+        mol modmaterial 1 0 Glossy
+        mol modmaterial 2 0 Glossy}
+    if {$stylenum=="2"} {
+        mol modmaterial 1 0 EdgyGlass
+        mol modmaterial 2 0 EdgyGlass}
+}
+}

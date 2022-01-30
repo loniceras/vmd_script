@@ -26,12 +26,9 @@ mol modmaterial 1 0 EdgyGlass
 mol modcolor 1 0 Volume 0
 mol scaleminmax 0 1 $colorlow $colorhigh
 
-proc esp1 {} {
-    mol modmaterial 1 0 EdgyGlass
-}
-
-proc esp2 {} {
-    mol modmaterial 1 0 Transparent
+proc style {stylenum} {
+    if {$stylenum=="1"} {mol modmaterial 1 0 EdgyGlass}
+    if {$stylenum=="2"} {mol modmaterial 1 0 Transparent}
 }
 
 #Load surfanalysis.pdb to show ESP extrema on vdW surface

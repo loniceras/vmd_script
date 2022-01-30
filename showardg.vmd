@@ -1,0 +1,83 @@
+proc ardg {} {
+#This script is used to draw sign(λ2)ρ colored molecular aRDG isosurface
+#avgsl2r.cub, avgRDG.cub should be presented in current folder
+
+color scale method BGR
+color Display Background white
+axes location off
+display depthcue off
+light 3 on
+material change specular Opaque 0.300000
+
+mol new avgsl2r.cub
+mol addfile avgRDG.cub
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.25000 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 -0.025 0.025
+}
+
+proc ardgtfi {} {
+#This script is used to draw TFI colored molecular aRDG isosurface
+#thermflu.cub, avgRDG.cub should be presented in current folder
+
+color scale method BGR
+color Display Background white
+axes location off
+display depthcue off
+light 3 on
+material change specular Opaque 0.300000
+
+mol new thermflu.cub
+mol addfile avgRDG.cub
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.25000 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 0.0 1.5
+}
+
+proc aigm {} {
+#This script is used to draw sign(λ2)ρ colored molecular δg_inter isosurface
+#avgsl2r.cub, avgdg_inter.cub should be presented in current folder
+
+color scale method BGR
+color Display Background white
+axes location off
+display depthcue off
+light 3 on
+material change specular Opaque 0.300000
+
+mol new avgsl2r.cub
+mol addfile avgdg_inter.cub
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.008 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 -0.05 0.05
+}
+
+proc aigmtfi {} {
+#This script is used to draw TFI colored molecular δg_inter isosurface
+#thermflu.cub, avgdg_inter.cub should be presented in current folder
+
+color scale method BGR
+color Display Background white
+axes location off
+display depthcue off
+light 3 on
+material change specular Opaque 0.300000
+
+mol new thermflu.cub
+mol addfile avgdg_inter.cub
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.008 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 0.0 1.5
+}

@@ -1,10 +1,10 @@
 proc igminter {} {
-#This script is used to draw sign(λ2)ρ colored molecular δg isosurface
+#This script is used to draw sign(λ2)ρ colored molecular δg_inter isosurface
 #sl2r.cub, dg_inter.cub should be presented in current folder
 
 color scale method BGR
 color Display Background white
-axes location Off
+axes location off
 display depthcue off
 display rendermode GLSL
 light 3 on
@@ -12,22 +12,21 @@ material change specular Opaque 0.300000
 
 mol new sl2r.cub
 mol addfile dg_inter.cub
-mol delrep 0 top
-mol representation CPK 1.0 0.3 18.0 16.0
-mol addrep top
-mol representation Isosurface 0.01000 1 0 0 1 1
-mol color Volume 0
-mol addrep top
-mol scaleminmax top 1 -0.05 0.05
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.01000 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 -0.05 0.05
 }
 
 proc igmintra {} {
-#This script is used to draw δg colored molecular isosurface
+#This script is used to draw sign(λ2)ρ colored molecular δg_intra isosurface
 #sl2r.cub, dg_intra.cub should be presented in current folder
 
 color scale method BGR
 color Display Background white
-axes location Off
+axes location off
 display depthcue off
 display rendermode GLSL
 light 3 on
@@ -35,11 +34,10 @@ material change specular Opaque 0.300000
 
 mol new sl2r.cub
 mol addfile dg_intra.cub
-mol delrep 0 top
-mol representation CPK 1.0 0.3 18.0 16.0
-mol addrep top
-mol representation Isosurface 0.2000 1 0 0 1 1
-mol color Volume 0
-mol addrep top
-mol scaleminmax top 1 -0.05 0.05
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.2000 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 -0.05 0.05
 }

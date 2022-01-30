@@ -1,0 +1,71 @@
+proc alie {} {
+#This script is used to draw ALIE colored molecular electron density isosurface with surface ALIE (minima) extrema
+#mapfunc.cub, surf.cub, surfanalysis.pdb should be presented in current folder
+
+color scale method BWR
+color Display Background white
+axes location Off
+display depthcue off
+display rendermode GLSL
+light 2 on
+light 3 on
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+#Lower and upper limits of color scale of ALIE (a.u.)
+set colorlow 0.32
+set colorhigh 0.36
+
+mol new mapfunc.cub
+mol addfile surf.cub
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.001000 1 0 0 1 1
+mol modmaterial 1 0 EdgyGlass
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 $colorlow $colorhigh
+
+#Load surfanalysis.pdb to show ALIE (minima) extrema on vdW surface
+mol new surfanalysis.pdb
+mol modstyle 0 top VDW 0.1 20
+mol modselect 0 top name O
+mol modcolor 0 top ColorID 21
+mol off top
+}
+
+proc lea {} {
+#This script is used to draw LEA colored molecular electron density isosurface with surface LEA (maxima) extrema
+#mapfunc.cub, surf.cub, surfanalysis.pdb should be presented in current folder
+
+color scale method BWR
+color Display Background white
+axes location Off
+display depthcue off
+display rendermode GLSL
+light 2 on
+light 3 on
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+#Lower and upper limits of color scale of LEA (a.u.)
+set colorlow -0.8
+set colorhigh -0.3
+
+mol new mapfunc.cub
+mol addfile surf.cub
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.001000 1 0 0 1 1
+mol modmaterial 1 0 EdgyGlass
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 $colorlow $colorhigh
+
+#Load surfanalysis.pdb to show LEA (maxima) extrema on vdW surface
+mol new surfanalysis.pdb
+mol modstyle 0 top VDW 0.07 20
+mol modselect 0 top name C
+mol modcolor 0 top ColorID 32
+mol off top
+}

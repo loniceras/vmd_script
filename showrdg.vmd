@@ -2,19 +2,69 @@ proc rdg {} {
 #This script is used to draw sign(λ2)ρ colored molecular RDG isosurface
 #func1.cub, func2.cub should be presented in current folder
 
+color scale method BGR
+color scale midpoint 0.666
 color Display Background white
-axes location Off
+axes location off
 display depthcue off
 display rendermode GLSL
+light 3 on
+material change specular Opaque 0.300000
 
 mol new func1.cub
 mol addfile func2.cub
-mol delrep 0 top
-mol representation CPK 1.0 0.3 18.0 16.0
-mol addrep top
-mol representation Isosurface 0.50000 1 0 0 1 1
-mol color Volume 0
-mol addrep top
-mol scaleminmax top 1 -0.04 0.02
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.50000 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 -0.04 0.02
+}
+
+proc iri {} {
+#This script is used to draw sign(λ2)ρ colored molecular IRI isosurface
+#func1.cub, func2.cub should be presented in current folder
+
 color scale method BGR
+color scale midpoint 0.666
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+light 3 on
+material change specular Opaque 0.300000
+
+color Element N iceblue
+mol new func1.cub
+mol addfile func2.cub
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 1.0 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 -0.04 0.02
+}
+
+proc dori {} {
+#This script is used to draw sign(λ2)ρ colored molecular DORI isosurface
+#func1.cub, func2.cub should be presented in current folder
+
+color scale method BGR
+color scale midpoint 0.666
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+light 3 on
+material change specular Opaque 0.300000
+
+color Element N iceblue
+mol new func1.cub
+mol addfile func2.cub
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 0 Element
+mol addrep 0
+mol modstyle 1 0 Isosurface 0.950000 1 0 0 1 1
+mol modcolor 1 0 Volume 0
+mol scaleminmax 0 1 -0.04 0.02
 }

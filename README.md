@@ -10,10 +10,10 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
     source showaim.vmd
     source showesp.vmd
     source showalie.vmd
+    source showhirsh.vmd
     source showrdg.vmd
     source showigm.vmd
     source showanci.vmd
-    source showhirsh.vmd
     ```
 
 ## Basic Usage

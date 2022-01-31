@@ -41,7 +41,7 @@ mol new mol.pdb
 mol modstyle 0 2 CPK 0.7 0.3 22.0 22.0
 mol off 2
 
-proc labcp {cptype {labsize 1.8} {offsetx -0.1} {offsety 0.0}} {
+proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     label delete Atoms all
     if {$cptype=="no"} {return}
     color Labels Atoms blue

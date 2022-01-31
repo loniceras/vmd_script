@@ -28,10 +28,35 @@ mol scaleminmax 0 1 $colorlow $colorhigh
 
 #Load surfanalysis.pdb to show ALIE (minima) extrema on vdW surface
 mol new surfanalysis.pdb
-mol modstyle 0 top VDW 0.1 20
-mol modselect 0 top name O
-mol modcolor 0 top ColorID 21
-mol off top
+mol modstyle 0 1 VDW 0.07 20
+mol modselect 0 1 name C
+mol modcolor 0 1 ColorID 32
+mol addrep 1
+mol modstyle 1 1 VDW 0.07 20
+mol modselect 1 1 name O
+mol modcolor 1 1 ColorID 21
+mol showrep 1 0 no
+mol off 1
+
+proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
+    label delete Atoms all
+    if {$cptype=="no"} {return}
+    color Labels Atoms black
+    label textthickness 2.000000
+    label textsize $labsize
+    set atmsel "name O"
+    if {$cptype=="all"} {set atmsel all}
+    if {$cptype=="max"} {set atmsel "name C"}
+    set sel [atomselect 1 $atmsel]
+    set k 0
+    foreach i [$sel list] {
+    label add Atoms 1/$i
+    label textformat Atoms $k { %b }
+    label textoffset Atoms $k "$offsetx $offsety"
+    incr k
+    }
+    $sel delete
+}
 }
 
 proc lea {} {
@@ -64,8 +89,33 @@ mol scaleminmax 0 1 $colorlow $colorhigh
 
 #Load surfanalysis.pdb to show LEA (maxima) extrema on vdW surface
 mol new surfanalysis.pdb
-mol modstyle 0 top VDW 0.07 20
-mol modselect 0 top name C
-mol modcolor 0 top ColorID 32
-mol off top
+mol modstyle 0 1 VDW 0.07 20
+mol modselect 0 1 name C
+mol modcolor 0 1 ColorID 32
+mol addrep 1
+mol modstyle 1 1 VDW 0.07 20
+mol modselect 1 1 name O
+mol modcolor 1 1 ColorID 21
+mol showrep 1 1 no
+mol off 1
+
+proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
+    label delete Atoms all
+    if {$cptype=="no"} {return}
+    color Labels Atoms black
+    label textthickness 2.000000
+    label textsize $labsize
+    set atmsel "name C"
+    if {$cptype=="all"} {set atmsel all}
+    if {$cptype=="min"} {set atmsel "name O"}
+    set sel [atomselect 1 $atmsel]
+    set k 0
+    foreach i [$sel list] {
+    label add Atoms 1/$i
+    label textformat Atoms $k { %b }
+    label textoffset Atoms $k "$offsetx $offsety"
+    incr k
+    }
+    $sel delete
+}
 }

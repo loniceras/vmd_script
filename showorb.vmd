@@ -32,8 +32,8 @@ mol modmaterial 2 0 Glossy
 mol modcolor 2 0 ColorID 22
 
 proc orb {orbnum {isoval 0.05}} {
-    mol modstyle 1 0 Isosurface $isoval $orbnum 0 0 1 1
-    mol modstyle 2 0 Isosurface -$isoval $orbnum 0 0 1 1
+    mol modstyle 1 0 Isosurface $isoval [expr $orbnum-1] 0 0 1 1
+    mol modstyle 2 0 Isosurface -$isoval [expr $orbnum-1] 0 0 1 1
 }
 
 proc style {stylenum} {

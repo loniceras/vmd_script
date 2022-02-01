@@ -4,11 +4,12 @@ proc alie {} {
 
 color scale method BWR
 color Display Background white
-axes location Off
+axes location off
 display depthcue off
 display rendermode GLSL
 light 2 on
 light 3 on
+material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
@@ -70,11 +71,12 @@ proc lea {} {
 
 color scale method BWR
 color Display Background white
-axes location Off
+axes location off
 display depthcue off
 display rendermode GLSL
 light 2 on
 light 3 on
+material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 

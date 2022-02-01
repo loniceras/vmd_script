@@ -8,7 +8,7 @@ axes location off
 display depthcue off
 display rendermode GLSL
 light 3 on
-material change specular Opaque 0.300000
+material change specular Opaque 0.200000
 
 mol new sl2r.cub
 mol addfile dg_inter.cub
@@ -30,7 +30,7 @@ axes location off
 display depthcue off
 display rendermode GLSL
 light 3 on
-material change specular Opaque 0.300000
+material change specular Opaque 0.200000
 
 mol new sl2r.cub
 mol addfile dg_intra.cub

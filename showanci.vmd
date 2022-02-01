@@ -7,7 +7,7 @@ color Display Background white
 axes location off
 display depthcue off
 light 3 on
-material change specular Opaque 0.300000
+material change specular Opaque 0.200000
 
 mol new avgsl2r.cub
 mol addfile avgRDG.cub
@@ -28,7 +28,7 @@ color Display Background white
 axes location off
 display depthcue off
 light 3 on
-material change specular Opaque 0.300000
+material change specular Opaque 0.200000
 
 mol new thermflu.cub
 mol addfile avgRDG.cub
@@ -49,7 +49,7 @@ color Display Background white
 axes location off
 display depthcue off
 light 3 on
-material change specular Opaque 0.300000
+material change specular Opaque 0.200000
 
 mol new avgsl2r.cub
 mol addfile avgdg_inter.cub
@@ -70,7 +70,7 @@ color Display Background white
 axes location off
 display depthcue off
 light 3 on
-material change specular Opaque 0.300000
+material change specular Opaque 0.200000
 
 mol new thermflu.cub
 mol addfile avgdg_inter.cub

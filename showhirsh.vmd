@@ -8,6 +8,7 @@ axes location off
 display depthcue off
 display rendermode GLSL
 #light 3 on
+material change specular Opaque 0.200000
 material change specular Translucent 0.200000
 material change diffuse Translucent 0.500000
 material change Opacity Translucent 0.850000
@@ -35,6 +36,7 @@ axes location off
 display depthcue off
 display rendermode GLSL
 #light 3 on
+material change specular Opaque 0.200000
 material change specular Translucent 0.200000
 material change diffuse Translucent 0.500000
 material change Opacity Translucent 0.850000

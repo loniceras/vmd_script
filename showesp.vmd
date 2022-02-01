@@ -12,6 +12,12 @@ light 3 on
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
+proc esp {} {
+puts "Available Commands: labcp cptype, style stylenum"
+puts "cptype = all / no / max / min"
+puts "stylenum = 1 / 2"
+}
+
 #Lower and upper limits of color scale of ESP (a.u.)
 set colorlow -0.03
 set colorhigh 0.03
@@ -72,6 +78,11 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode Normal
+
+proc esppt {} {
+puts "Available Commands: labcp cptype"
+puts "cptype = all / no / max / min"
+}
 
 #Lower and upper limits of color scale of ESP (kcal/mol in most case)
 set colorlow -50

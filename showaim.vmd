@@ -9,6 +9,11 @@ display rendermode GLSL
 light 3 on
 material change specular Opaque 0.300000
 
+proc aim {} {
+puts "Available Commands: labcp cptype"
+puts "cptype = all / no / 3n3 / 3n1 / 3p1 / 3p3"
+}
+
 set CPsize 0.07
 set pathsize 0.02
 

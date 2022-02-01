@@ -12,6 +12,11 @@ light 3 on
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
+proc alie {} {
+puts "Available Commands: labcp cptype"
+puts "cptype = all / no / max"
+}
+
 #Lower and upper limits of color scale of ALIE (a.u.)
 set colorlow 0.32
 set colorhigh 0.36
@@ -72,6 +77,11 @@ light 2 on
 light 3 on
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
+
+proc lea {} {
+puts "Available Commands: labcp cptype"
+puts "cptype = all / no / min"
+}
 
 #Lower and upper limits of color scale of LEA (a.u.)
 set colorlow -0.8

@@ -1,0 +1,57 @@
+proc apt {filename} {
+#This script is used to draw colored properties of atoms
+#filename.pqr should be presented in current folder
+
+color scale method BWR
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+light 3 on
+material change specular Opaque 0.200000
+
+proc apt {} {
+puts "Available Commands: labcp cptype, aptscale colorlow colorhigh"
+puts "cptype = apt / no / name"
+}
+
+#Lower and upper limits of color scale of atomic charges (a.u.)
+set colorlow -0.15
+set colorhigh 0.15
+
+proc aptscale {colorlow colorhigh} {
+    mol scaleminmax 0 0 $colorlow $colorhigh
+}
+
+mol new $filename.pqr
+mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
+mol modmaterial 0 0 Glossy
+mol modcolor 0 0 Charge
+mol scaleminmax 0 0 $colorlow $colorhigh
+
+proc labcp {cptype {labsize 1.8} {offsetx 0.25} {offsety 0.0}} {
+    label delete Atoms all
+    if {$cptype=="no"} {return}
+    color Labels Atoms black
+    label textthickness 2.000000
+    label textsize $labsize
+    set sel [atomselect 0 all]
+    set k 0
+    foreach i [$sel list] {
+    label add Atoms 0/$i
+    label textformat Atoms $k { %q }
+    label textoffset Atoms $k "$offsetx $offsety"
+    incr k
+    }
+    if {$cptype=="name"} {
+        label delete Atoms all
+        set k 0
+        foreach i [$sel list] {
+        label add Atoms 0/$i
+        label textformat Atoms $k { %a }
+        label textoffset Atoms $k "$offsetx $offsety"
+        incr k
+    }}
+    $sel delete
+}
+}

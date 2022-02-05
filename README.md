@@ -6,6 +6,7 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
 2. Add following commands to `vmd.rc`.
     ```
     source showcub.vmd
+    source showapt.vmd
     source showvib.vmd
     source showorb.vmd
     source showaim.vmd
@@ -19,14 +20,15 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
 
 ## Basic Usage
 1. Generate required cub/pdb files by Multiwfn.
-2. Move those cub/pdb files to the installation directory of VMD 1.9.3.
+2. Move those cub/pdb/xyz files to the installation directory of VMD 1.9.3.
 3. Open a new VMD window.
 4. Input required command in VMD Command-Line Window.
 
 | Multiwfn Function     | Command      | Required Files                            |
 | --------------------- | ------------ | ----------------------------------------- |
 | Read cub file         | `cub xxx`    | xxx.cub                                   |
-| View vibration modes  | `vib xxx n`  | xxx.pdb, xxx.out                          |
+| View atom properties  | `apt xxx`    | xxx.pqr                                   |
+| View vibration modes  | `vib xxx n`  | xxx.xyz, xxx.out                          |
 | View orbitals         | `orb`        | orbital.cub                               |
 | 2  AIM analysis       | `aim`        | mol.pdb, CPs.pdb, paths.pdb               |
 | 12 ESP analysis       | `esp`        | mapfunc.cub, surf.cub, surfanalysis.pdb   |

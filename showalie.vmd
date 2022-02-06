@@ -23,7 +23,6 @@ set colorlow 0.32
 set colorhigh 0.36
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -50,6 +49,7 @@ mol modcolor 1 [expr $topidx+2] ColorID 21
 mol showrep [expr $topidx+2] 0 no
 #mol off [expr $topidx+2]
 
+#Add labels
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     set cpinx [molinfo top]
     label delete Atoms all
@@ -98,7 +98,6 @@ set colorlow -0.8
 set colorhigh -0.3
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -125,6 +124,7 @@ mol modcolor 1 [expr $topidx+2] ColorID 21
 mol showrep [expr $topidx+2] 1 no
 #mol off [expr $topidx+2]
 
+#Add labels
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     set cpinx [molinfo top]
     label delete Atoms all

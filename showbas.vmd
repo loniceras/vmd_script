@@ -17,11 +17,10 @@ puts "Available Commands: labcp cptype, basinadd bbasin ebasin, basindel"
 puts "cptype = all / no"
 }
 
+#Point size
 set CPsize 0.07
-set isoval 0
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -50,6 +49,7 @@ proc basindel {} {
     }
 }
 
+#Add labels
 proc labcp {cptype {labsize 1.8} {offsetx 0.15} {offsety 0.0}} {
     label delete Atoms all
     if {$cptype=="no"} {return}

@@ -17,11 +17,11 @@ puts "Available Commands: labcp cptype, basinadd bbasin ebasin, basindel"
 puts "cptype = all / no / 3n3 / 3n1 / 3p1 / 3p3"
 }
 
+#Point size and path size
 set CPsize 0.07
 set pathsize 0.02
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -73,6 +73,7 @@ proc basindel {} {
     }
 }
 
+#Add labels
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     set cpinx [expr [molinfo top]-2]
     label delete Atoms all

@@ -17,11 +17,11 @@ proc helpp {} {
 puts "No Available Commands"
 }
 
+#Lower and upper limits of color scale of d_norm
 set colorlow -0.6
 set colorhigh 0.6
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -54,10 +54,10 @@ proc helpp {} {
 puts "No Available Commands"
 }
 
+#Lower and upper limits of color scale of ρ
 set colorhigh 0.015
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }

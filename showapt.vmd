@@ -23,7 +23,6 @@ set colorlow -0.15
 set colorhigh 0.15
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -34,11 +33,13 @@ mol modmaterial 0 [expr $topidx+1] Opaque
 mol modcolor 0 [expr $topidx+1] Charge
 mol scaleminmax [expr $topidx+1] 0 $colorlow $colorhigh
 
+#Modify lower and upper limits of color scale
 proc aptscale {colorlow colorhigh} {
     set molidx [molinfo top]
     mol scaleminmax $molidx 0 $colorlow $colorhigh
 }
 
+#Add labels
 proc labcp {cptype {labsize 1.8} {offsetx 0.25} {offsety 0.0}} {
     set molidx [molinfo top]
     label delete Atoms all

@@ -19,7 +19,6 @@ puts "No Available Commands"
 }
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -55,7 +54,6 @@ puts "No Available Commands"
 }
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -92,7 +90,6 @@ puts "No Available Commands"
 }
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }

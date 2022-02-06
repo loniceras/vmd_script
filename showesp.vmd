@@ -24,7 +24,6 @@ set colorlow -0.03
 set colorhigh 0.03
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -39,6 +38,7 @@ mol modmaterial 1 [expr $topidx+1] EdgyGlass
 mol modcolor 1 [expr $topidx+1] Volume 0
 mol scaleminmax [expr $topidx+1] 1 $colorlow $colorhigh
 
+#Modify style
 proc style {stylenum} {
     set surfidx [expr [molinfo top]-1]
     if {$stylenum=="1"} {mol modmaterial 1 $surfidx EdgyGlass}
@@ -56,6 +56,7 @@ mol modselect 1 [expr $topidx+2] name O
 mol modcolor 1 [expr $topidx+2] ColorID 21
 #mol off [expr $topidx+2]
 
+#Add labels
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     set cpinx [molinfo top]
     label delete Atoms all
@@ -95,14 +96,13 @@ puts "Available Commands: labcp cptype"
 puts "cptype = all / no / max / min"
 }
 
-#Lower and upper limits of color scale of ESP (kcal/mol in most case)
+#Lower and upper limits of color scale of ESP (kcal/mol)
 set colorlow -50
 set colorhigh 50
 #Point size
 set ptsize 4.0
 
 set topidx [molinfo top]
-
 foreach i [molinfo list] {
 mol delete $i
 }
@@ -126,6 +126,7 @@ mol modselect 1 [expr $topidx+3] name O
 mol modcolor 1 [expr $topidx+3] ColorID 21
 #mol off [expr $topidx+3]
 
+#Add labels
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     set cpinx [molinfo top]
     label delete Atoms all

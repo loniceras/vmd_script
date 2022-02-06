@@ -35,6 +35,7 @@ foreach i [molinfo list] {
 mol delete $i
 }
 
+#Isosurface value
 set isoval 0.05
 
 mol new $filename.cub
@@ -49,11 +50,13 @@ mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
 mol modcolor 2 top ColorID 22
 mol modmaterial 2 top Glossy
 
+#Modify isosurface value
 proc cubiso {isoval} {
     mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
     mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
 }
 
+#Modify style
 proc style {maternum colornum} {
     if {$maternum=="1"} {
         material change specular Opaque 0.200000
@@ -137,6 +140,7 @@ foreach i [molinfo list] {
 mol delete $i
 }
 
+#Isosurface value
 set isoval 0.05
 
 mol new $filename1.cub
@@ -155,12 +159,14 @@ mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
 mol modcolor 1 top ColorID 22
 mol modmaterial 1 top Glossy
 
+#Modify isosurface value
 proc iso {isoval} {
     foreach i [molinfo list] {
     mol modstyle 1 $i Isosurface $isoval 0 0 0 1 1
     }
 }
 
+#Modify style
 proc style {maternum colornum} {
     if {$maternum=="1"} {
         material change specular Opaque 0.200000

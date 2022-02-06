@@ -35,6 +35,7 @@ foreach i [molinfo list] {
 mol delete $i
 }
 
+#Isosurface value and orbital number
 set isoval 0.05
 set orbnum 0
 
@@ -50,11 +51,13 @@ mol modstyle 2 top Isosurface -$isoval $orbnum 0 0 1 1
 mol modmaterial 2 top Glossy
 mol modcolor 2 top ColorID 22
 
+#Modify isosurface value and orbital number
 proc orbshow {orbnum {isoval 0.05}} {
     mol modstyle 1 top Isosurface $isoval [expr $orbnum-1] 0 0 1 1
     mol modstyle 2 top Isosurface -$isoval [expr $orbnum-1] 0 0 1 1
 }
 
+#Modify style
 proc style {maternum colornum} {
     if {$maternum=="1"} {
         material change specular Opaque 0.200000

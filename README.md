@@ -10,6 +10,7 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
     source showvib.vmd
     source showorb.vmd
     source showaim.vmd
+    source showbas.vmd
     source showesp.vmd
     source showalie.vmd
     source showhirsh.vmd
@@ -20,7 +21,7 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
 
 ## Basic Usage
 1. Generate required cub/pdb files by Multiwfn.
-2. Move those cub/pdb/xyz files to the installation directory of VMD 1.9.3.
+2. Move those cub/pdb/pqr/xyz files to the installation directory of VMD 1.9.3.
 3. Open a new VMD window.
 4. Input required command in VMD Command-Line Window.
 
@@ -37,6 +38,7 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
 | 12 LEA analysis       | `lea`        | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | 12 HS analysis        | `hirshd`     | mapfunc.cub, surf.cub                     |
 | 12 HS analysis        | `hirshr`     | mapfunc.cub, surf.cub                     |
+| 17 Basin analysis     | `basin`      | mol.pdb, attractors.pqr, basinxxxx.cub    |
 | 20 RDG analysis       | `rdg`        | func1.cub, func2.cub                      |
 | 20 IRI analysis       | `iri`        | func1.cub, func2.cub                      |
 | 20 DORI analysis      | `dori`       | func1.cub, func2.cub                      |

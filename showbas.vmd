@@ -1,0 +1,60 @@
+proc basin {} {
+#This script is used to draw basin analysis figure
+#mol.pdb, attractors.pqr, basin.cub should be presented in current folder
+
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+light 3 on
+material change specular Opaque 0.200000
+
+proc basin {} {
+puts "Available Commands: labcp cptype, basinadd bbasin ebasin, basindel"
+puts "cptype = all / no"
+}
+
+set CPsize 0.07
+set isoval 0
+
+#Load attractors
+mol new attractors.pqr
+mol modstyle 0 0 VDW $CPsize 22.0
+mol modcolor 0 0 ColorID 11
+#Load molecular structure
+mol new mol.pdb
+mol modstyle 0 1 CPK 0.7 0.3 22.0 22.0
+
+#Load basins
+proc basinadd {bbasin ebasin} {
+    for {set i $bbasin} {$i<=$ebasin} {incr i} {
+    mol new basin[format %04d $i].cub
+    mol modstyle 0 top Isosurface 1 0 0 0 1 1
+    mol modcolor 0 top ColorID 12
+    mol modmaterial 0 top Transparent
+    }
+}
+proc basindel {} {
+    for {set imol 2} {[molinfo num]>2} {incr imol} {
+    mol delete $imol
+    }
+}
+
+proc labcp {cptype {labsize 1.8} {offsetx 0.15} {offsety 0.0}} {
+    label delete Atoms all
+    if {$cptype=="no"} {return}
+    color Labels Atoms black
+    label textthickness 2.000000
+    label textsize $labsize
+    set sel [atomselect 0 all]
+    set k 0
+    foreach i [$sel list] {
+    label add Atoms 0/$i
+    label textformat Atoms $k { %q }
+    label textoffset Atoms $k "$offsetx $offsety"
+    incr k
+    }
+    $sel delete
+    puts  "unit = a.u."
+}
+}

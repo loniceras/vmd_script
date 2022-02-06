@@ -6,48 +6,75 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
 
-proc aim {} {
-puts "Available Commands: labcp cptype"
+proc helpp {} {
+puts "Available Commands: labcp cptype, basinadd bbasin ebasin, basindel"
 puts "cptype = all / no / 3n3 / 3n1 / 3p1 / 3p3"
 }
 
 set CPsize 0.07
 set pathsize 0.02
 
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
+
 #Load critical points
 mol new CPs.pdb
 #Load and set (3,-3)
-mol modselect 0 0 name C
-mol modstyle 0 0 VDW $CPsize 22.0
-mol modcolor 0 0 ColorID 11
+mol modselect 0 [expr $topidx+1] name C
+mol modstyle 0 [expr $topidx+1] VDW $CPsize 22.0
+mol modcolor 0 [expr $topidx+1] ColorID 11
 #Load and set (3,-1)
-mol addrep 0
-mol modselect 1 0 name N
-mol modstyle 1 0 VDW $CPsize 22.0
-mol modcolor 1 0 ColorID 3
+mol addrep [expr $topidx+1]
+mol modselect 1 [expr $topidx+1] name N
+mol modstyle 1 [expr $topidx+1] VDW $CPsize 22.0
+mol modcolor 1 [expr $topidx+1] ColorID 3
 #Load and set (3,+1)
-mol addrep 0
-mol modselect 2 0 name O
-mol modstyle 2 0 VDW $CPsize 22.0
-mol modcolor 2 0 ColorID 4
+mol addrep [expr $topidx+1]
+mol modselect 2 [expr $topidx+1] name O
+mol modstyle 2 [expr $topidx+1] VDW $CPsize 22.0
+mol modcolor 2 [expr $topidx+1] ColorID 4
 #Load and set (3,+3)
-mol addrep 0
-mol modselect 3 0 name F
-mol modstyle 3 0 VDW $CPsize 22.0
-mol modcolor 3 0 ColorID 7
+mol addrep [expr $topidx+1]
+mol modselect 3 [expr $topidx+1] name F
+mol modstyle 3 [expr $topidx+1] VDW $CPsize 22.0
+mol modcolor 3 [expr $topidx+1] ColorID 7
 #Load and set topology paths
 mol new paths.pdb
-mol modstyle 0 1 VDW $pathsize 22.0
-mol modcolor 0 1 ColorID 32
+mol modstyle 0 [expr $topidx+2] VDW $pathsize 22.0
+mol modcolor 0 [expr $topidx+2] ColorID 32
 #Load molecular structure
 mol new mol.pdb
-mol modstyle 0 2 CPK 0.7 0.3 22.0 22.0
-mol off 2
+mol modstyle 0 [expr $topidx+3] CPK 0.7 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+3] Element
+mol off [expr $topidx+3]
+
+#Load basins
+proc basinadd {bbasin ebasin} {
+    for {set i $bbasin} {$i<=$ebasin} {incr i} {
+    mol new basin[format %04d $i].cub
+    mol modstyle 0 top Isosurface 1 0 0 0 1 1
+    mol modcolor 0 top ColorID 12
+    mol modmaterial 0 top Transparent
+    }
+}
+proc basindel {} {
+    set molidx [expr [molinfo top]-[molinfo num]+4]
+    for {set imol $molidx} {[molinfo num]>3} {incr imol} {
+    mol delete $imol
+    }
+}
 
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
+    set cpinx [expr [molinfo top]-2]
     label delete Atoms all
     if {$cptype=="no"} {return}
     color Labels Atoms blue
@@ -58,10 +85,10 @@ proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     if {$cptype=="3n1"} {set atmsel "name N"}
     if {$cptype=="3p1"} {set atmsel "name O"}
     if {$cptype=="3p3"} {set atmsel "name F"}
-    set sel [atomselect 0 $atmsel]
+    set sel [atomselect $cpinx $atmsel]
     set k 0
     foreach i [$sel list] {
-    label add Atoms 0/$i
+    label add Atoms $cpinx/$i
     label textformat Atoms $k { %1i }
     label textoffset Atoms $k "$offsetx $offsety"
     incr k

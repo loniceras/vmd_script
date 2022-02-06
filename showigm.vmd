@@ -7,17 +7,30 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
+
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
 
 mol new sl2r.cub
 mol addfile dg_inter.cub
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.01000 1 0 0 1 1
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 -0.05 0.05
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.01000 1 0 0 1 1
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 -0.05 0.05
 }
 
 proc igmintra {} {
@@ -29,15 +42,28 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
+
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
 
 mol new sl2r.cub
 mol addfile dg_intra.cub
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.2000 1 0 0 1 1
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 -0.05 0.05
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.2000 1 0 0 1 1
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 -0.05 0.05
 }

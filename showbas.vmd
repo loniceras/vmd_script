@@ -1,15 +1,18 @@
 proc basin {} {
 #This script is used to draw basin analysis figure
-#mol.pdb, attractors.pqr, basin.cub should be presented in current folder
+#mol.pdb, attractors.pqr should be presented in current folder
 
 color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
 
-proc basin {} {
+proc helpp {} {
 puts "Available Commands: labcp cptype, basinadd bbasin ebasin, basindel"
 puts "cptype = all / no"
 }
@@ -17,13 +20,19 @@ puts "cptype = all / no"
 set CPsize 0.07
 set isoval 0
 
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
+
 #Load attractors
 mol new attractors.pqr
-mol modstyle 0 0 VDW $CPsize 22.0
-mol modcolor 0 0 ColorID 11
+mol modstyle 0 [expr $topidx+1] VDW $CPsize 22.0
+mol modcolor 0 [expr $topidx+1] ColorID 11
 #Load molecular structure
 mol new mol.pdb
-mol modstyle 0 1 CPK 0.7 0.3 22.0 22.0
+mol modstyle 0 [expr $topidx+2] CPK 0.7 0.3 22.0 22.0
 
 #Load basins
 proc basinadd {bbasin ebasin} {
@@ -35,7 +44,8 @@ proc basinadd {bbasin ebasin} {
     }
 }
 proc basindel {} {
-    for {set imol 2} {[molinfo num]>2} {incr imol} {
+    set molidx [expr [molinfo top]-[molinfo num]+3]
+    for {set imol $molidx} {[molinfo num]>2} {incr imol} {
     mol delete $imol
     }
 }

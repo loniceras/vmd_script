@@ -13,7 +13,7 @@ material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
-proc alie {} {
+proc helpp {} {
 puts "Available Commands: labcp cptype"
 puts "cptype = all / no / max"
 }
@@ -22,29 +22,36 @@ puts "cptype = all / no / max"
 set colorlow 0.32
 set colorhigh 0.36
 
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
+
 mol new mapfunc.cub
 mol addfile surf.cub
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.001000 1 0 0 1 1
-mol modmaterial 1 0 EdgyGlass
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 $colorlow $colorhigh
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.001000 1 0 0 1 1
+mol modmaterial 1 [expr $topidx+1] EdgyGlass
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 $colorlow $colorhigh
 
 #Load surfanalysis.pdb to show ALIE (minima) extrema on vdW surface
 mol new surfanalysis.pdb
-mol modstyle 0 1 VDW 0.07 20
-mol modselect 0 1 name C
-mol modcolor 0 1 ColorID 32
-mol addrep 1
-mol modstyle 1 1 VDW 0.07 20
-mol modselect 1 1 name O
-mol modcolor 1 1 ColorID 21
-mol showrep 1 0 no
-mol off 1
+mol modstyle 0 [expr $topidx+2] VDW 0.07 20
+mol modselect 0 [expr $topidx+2] name C
+mol modcolor 0 [expr $topidx+2] ColorID 32
+mol addrep [expr $topidx+2]
+mol modstyle 1 [expr $topidx+2] VDW 0.07 20
+mol modselect 1 [expr $topidx+2] name O
+mol modcolor 1 [expr $topidx+2] ColorID 21
+mol showrep [expr $topidx+2] 0 no
+#mol off [expr $topidx+2]
 
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
+    set cpinx [molinfo top]
     label delete Atoms all
     if {$cptype=="no"} {return}
     color Labels Atoms black
@@ -53,10 +60,10 @@ proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     set atmsel "name O"
     if {$cptype=="all"} {set atmsel all}
     if {$cptype=="max"} {set atmsel "name C"}
-    set sel [atomselect 1 $atmsel]
+    set sel [atomselect $cpinx $atmsel]
     set k 0
     foreach i [$sel list] {
-    label add Atoms 1/$i
+    label add Atoms $cpinx/$i
     label textformat Atoms $k { %b }
     label textoffset Atoms $k "$offsetx $offsety"
     incr k
@@ -81,7 +88,7 @@ material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
-proc lea {} {
+proc helpp {} {
 puts "Available Commands: labcp cptype"
 puts "cptype = all / no / min"
 }
@@ -90,29 +97,36 @@ puts "cptype = all / no / min"
 set colorlow -0.8
 set colorhigh -0.3
 
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
+
 mol new mapfunc.cub
 mol addfile surf.cub
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.001000 1 0 0 1 1
-mol modmaterial 1 0 EdgyGlass
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 $colorlow $colorhigh
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.001000 1 0 0 1 1
+mol modmaterial 1 [expr $topidx+1] EdgyGlass
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 $colorlow $colorhigh
 
 #Load surfanalysis.pdb to show LEA (maxima) extrema on vdW surface
 mol new surfanalysis.pdb
-mol modstyle 0 1 VDW 0.07 20
-mol modselect 0 1 name C
-mol modcolor 0 1 ColorID 32
-mol addrep 1
-mol modstyle 1 1 VDW 0.07 20
-mol modselect 1 1 name O
-mol modcolor 1 1 ColorID 21
-mol showrep 1 1 no
-mol off 1
+mol modstyle 0 [expr $topidx+2] VDW 0.07 20
+mol modselect 0 [expr $topidx+2] name C
+mol modcolor 0 [expr $topidx+2] ColorID 32
+mol addrep [expr $topidx+2]
+mol modstyle 1 [expr $topidx+2] VDW 0.07 20
+mol modselect 1 [expr $topidx+2] name O
+mol modcolor 1 [expr $topidx+2] ColorID 21
+mol showrep [expr $topidx+2] 1 no
+#mol off [expr $topidx+2]
 
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
+    set cpinx [molinfo top]
     label delete Atoms all
     if {$cptype=="no"} {return}
     color Labels Atoms black
@@ -121,10 +135,10 @@ proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     set atmsel "name C"
     if {$cptype=="all"} {set atmsel all}
     if {$cptype=="min"} {set atmsel "name O"}
-    set sel [atomselect 1 $atmsel]
+    set sel [atomselect $cpinx $atmsel]
     set k 0
     foreach i [$sel list] {
-    label add Atoms 1/$i
+    label add Atoms $cpinx/$i
     label textformat Atoms $k { %b }
     label textoffset Atoms $k "$offsetx $offsety"
     incr k

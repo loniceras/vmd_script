@@ -7,10 +7,13 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
 
-proc apt {} {
+proc helpp {} {
 puts "Available Commands: labcp cptype, aptscale colorlow colorhigh"
 puts "cptype = apt / no / name"
 }
@@ -19,26 +22,34 @@ puts "cptype = apt / no / name"
 set colorlow -0.15
 set colorhigh 0.15
 
-proc aptscale {colorlow colorhigh} {
-    mol scaleminmax 0 0 $colorlow $colorhigh
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
 }
 
 mol new $filename.pqr
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modmaterial 0 0 Glossy
-mol modcolor 0 0 Charge
-mol scaleminmax 0 0 $colorlow $colorhigh
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modmaterial 0 [expr $topidx+1] Opaque
+mol modcolor 0 [expr $topidx+1] Charge
+mol scaleminmax [expr $topidx+1] 0 $colorlow $colorhigh
+
+proc aptscale {colorlow colorhigh} {
+    set molidx [molinfo top]
+    mol scaleminmax $molidx 0 $colorlow $colorhigh
+}
 
 proc labcp {cptype {labsize 1.8} {offsetx 0.25} {offsety 0.0}} {
+    set molidx [molinfo top]
     label delete Atoms all
     if {$cptype=="no"} {return}
     color Labels Atoms black
     label textthickness 2.000000
     label textsize $labsize
-    set sel [atomselect 0 all]
+    set sel [atomselect $molidx all]
     set k 0
     foreach i [$sel list] {
-    label add Atoms 0/$i
+    label add Atoms $molidx/$i
     label textformat Atoms $k { %q }
     label textoffset Atoms $k "$offsetx $offsety"
     incr k
@@ -47,7 +58,7 @@ proc labcp {cptype {labsize 1.8} {offsetx 0.25} {offsety 0.0}} {
         label delete Atoms all
         set k 0
         foreach i [$sel list] {
-        label add Atoms 0/$i
+        label add Atoms $molidx/$i
         label textformat Atoms $k { %a }
         label textoffset Atoms $k "$offsetx $offsety"
         incr k

@@ -1,5 +1,5 @@
 # vmd_script
-VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were modified from Sobereva (http://sobereva.com/multiwfn/).
+These VMD 1.9.3 scripts are used to draw beautiful Multiwfn graphs. Most of scripts were modified from Sobereva (http://sobereva.com/multiwfn/), and all original scripts were available from the installation package of Multiwfn. The modified scripts are more robust and convenient than the original ones.
 
 ## Basic Configuration
 1. Copy these `.vmd` files to installation directory of VMD 1.9.3.
@@ -38,7 +38,7 @@ VMD 1.9.3 scripts for drawing beautiful Multiwfn graphs. Most of scripts were mo
 | 12 LEA analysis       | `lea`        | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | 12 HS analysis        | `hirshd`     | mapfunc.cub, surf.cub                     |
 | 12 HS analysis        | `hirshr`     | mapfunc.cub, surf.cub                     |
-| 17 Basin analysis     | `basin`      | mol.pdb, attractors.pqr, basinxxxx.cub    |
+| 17 Basin analysis     | `basin`      | mol.pdb, attractors.pqr                   |
 | 20 RDG analysis       | `rdg`        | func1.cub, func2.cub                      |
 | 20 IRI analysis       | `iri`        | func1.cub, func2.cub                      |
 | 20 DORI analysis      | `dori`       | func1.cub, func2.cub                      |

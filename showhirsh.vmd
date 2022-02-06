@@ -7,23 +7,33 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
-#light 3 on
+light 2 off
+light 3 on
 material change specular Opaque 0.200000
-material change specular Translucent 0.200000
-material change diffuse Translucent 0.500000
-material change Opacity Translucent 0.850000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
 
 set colorlow -0.6
 set colorhigh 0.6
 
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
+
 mol new mapfunc.cub
 mol addfile surf.cub
-mol modstyle 0 0 Licorice 0.200000 17.000000 17.000000
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.5 1 0 0 1 1
-mol modmaterial 1 0 Translucent
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 $colorlow $colorhigh
+mol modstyle 0 [expr $topidx+1] Licorice 0.2 17.0 17.0
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.5 1 0 0 1 1
+mol modmaterial 1 [expr $topidx+1] EdgyGlass
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 $colorlow $colorhigh
 }
 
 proc hirshr {} {
@@ -37,18 +47,27 @@ display depthcue off
 display rendermode GLSL
 #light 3 on
 material change specular Opaque 0.200000
-material change specular Translucent 0.200000
-material change diffuse Translucent 0.500000
-material change Opacity Translucent 0.850000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
 
 set colorhigh 0.015
 
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
+
 mol new mapfunc.cub
 mol addfile surf.cub
-mol modstyle 0 0 Licorice 0.200000 17.000000 17.000000
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.5 1 0 0 1 1
-mol modmaterial 1 0 Translucent
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 0.0 $colorhigh
+mol modstyle 0 [expr $topidx+1] Licorice 0.2 17.0 17.0
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.5 1 0 0 1 1
+mol modmaterial 1 [expr $topidx+1] EdgyGlass
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 0.0 $colorhigh
 }

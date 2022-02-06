@@ -6,10 +6,10 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 3 off
 light 3 on
 
-color Element C gray
-color change rgb gray 0.600000 0.600000 0.600000
+color Element C silver
 material change specular Opaque 0.200000
 material change ambient Glossy 0.100000
 material change diffuse Glossy 0.600000
@@ -24,6 +24,12 @@ material change shininess Goodsell 0.000000
 material change opacity Goodsell 0.700000
 material change outline Goodsell 0.300000
 material change outlinewidth Goodsell 0.300000
+
+proc helpp {} {
+puts "Available Commands: cubiso isoval, style maternum colornum"
+puts "maternum = 1 / 2 / 3"
+puts "colornum = 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10"
+}
 
 foreach i [molinfo list] {
 mol delete $i
@@ -43,7 +49,7 @@ mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
 mol modcolor 2 top ColorID 22
 mol modmaterial 2 top Glossy
 
-proc iso {isoval} {
+proc cubiso {isoval} {
     mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
     mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
 }
@@ -102,10 +108,10 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 2 off
 light 3 on
 
-color Element C gray
-color change rgb gray 0.600000 0.600000 0.600000
+color Element C silver
 material change specular Opaque 0.200000
 material change ambient Glossy 0.100000
 material change diffuse Glossy 0.600000
@@ -120,6 +126,12 @@ material change shininess Goodsell 0.000000
 material change opacity Goodsell 0.700000
 material change outline Goodsell 0.300000
 material change outlinewidth Goodsell 0.300000
+
+proc helpp {} {
+puts "Available Commands: cubiso isoval, style maternum colornum"
+puts "maternum = 1 / 2 / 3"
+puts "colornum = 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10"
+}
 
 foreach i [molinfo list] {
 mol delete $i

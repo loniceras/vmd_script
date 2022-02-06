@@ -37,8 +37,15 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
 
 foreach i [molinfo list] {
 mol delete $i

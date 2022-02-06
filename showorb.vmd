@@ -6,10 +6,10 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
+light 2 off
 light 3 on
 
-color Element C gray
-color change rgb gray 0.600000 0.600000 0.600000
+color Element C silver
 material change specular Opaque 0.200000
 material change ambient Glossy 0.100000
 material change diffuse Glossy 0.600000
@@ -25,24 +25,34 @@ material change opacity Goodsell 0.700000
 material change outline Goodsell 0.300000
 material change outlinewidth Goodsell 0.300000
 
+proc helpp {} {
+puts "Available Commands: orbshow orbnum, style maternum colornum"
+puts "maternum = 1 / 2 / 3"
+puts "colornum = 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10"
+}
+
+foreach i [molinfo list] {
+mol delete $i
+}
+
 set isoval 0.05
 set orbnum 0
 
 mol new orbital.cub
-mol modstyle 0 0 CPK 0.8 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface $isoval $orbnum 0 0 1 1
-mol modmaterial 1 0 Glossy
-mol modcolor 1 0 ColorID 12
+mol modstyle 0 top CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 top Element
 mol addrep top
-mol modstyle 2 0 Isosurface -$isoval $orbnum 0 0 1 1
-mol modmaterial 2 0 Glossy
-mol modcolor 2 0 ColorID 22
+mol modstyle 1 top Isosurface $isoval $orbnum 0 0 1 1
+mol modmaterial 1 top Glossy
+mol modcolor 1 top ColorID 12
+mol addrep top
+mol modstyle 2 top Isosurface -$isoval $orbnum 0 0 1 1
+mol modmaterial 2 top Glossy
+mol modcolor 2 top ColorID 22
 
-proc orb {orbnum {isoval 0.05}} {
-    mol modstyle 1 0 Isosurface $isoval [expr $orbnum-1] 0 0 1 1
-    mol modstyle 2 0 Isosurface -$isoval [expr $orbnum-1] 0 0 1 1
+proc orbshow {orbnum {isoval 0.05}} {
+    mol modstyle 1 top Isosurface $isoval [expr $orbnum-1] 0 0 1 1
+    mol modstyle 2 top Isosurface -$isoval [expr $orbnum-1] 0 0 1 1
 }
 
 proc style {maternum colornum} {

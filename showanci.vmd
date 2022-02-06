@@ -6,17 +6,30 @@ color scale method BGR
 color Display Background white
 axes location off
 display depthcue off
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
+
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
 
 mol new avgsl2r.cub
 mol addfile avgRDG.cub
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.25000 1 0 0 1 1
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 -0.025 0.025
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.25000 1 0 0 1 1
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 -0.025 0.025
 }
 
 proc ardgtfi {} {
@@ -27,17 +40,30 @@ color scale method BGR
 color Display Background white
 axes location off
 display depthcue off
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
+
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
 
 mol new thermflu.cub
 mol addfile avgRDG.cub
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.25000 1 0 0 1 1
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 0.0 1.5
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.25000 1 0 0 1 1
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 0.0 1.5
 }
 
 proc aigm {} {
@@ -48,17 +74,30 @@ color scale method BGR
 color Display Background white
 axes location off
 display depthcue off
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
+
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
 
 mol new avgsl2r.cub
 mol addfile avgdg_inter.cub
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.008 1 0 0 1 1
-mol modcolor 1 0 Volume 0
-mol scaleminmax 0 1 -0.05 0.05
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.008 1 0 0 1 1
+mol modcolor 1 [expr $topidx+1] Volume 0
+mol scaleminmax [expr $topidx+1] 1 -0.05 0.05
 }
 
 proc aigmtfi {} {
@@ -69,15 +108,28 @@ color scale method BGR
 color Display Background white
 axes location off
 display depthcue off
+light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+
+proc helpp {} {
+puts "No Available Commands"
+}
+
+set topidx [molinfo top]
+
+foreach i [molinfo list] {
+mol delete $i
+}
 
 mol new thermflu.cub
 mol addfile avgdg_inter.cub
-mol modstyle 0 0 CPK 1.0 0.3 22.0 22.0
-mol modcolor 0 0 Element
-mol addrep 0
-mol modstyle 1 0 Isosurface 0.008 1 0 0 1 1
-mol modcolor 1 0 Volume 0
+mol modstyle 0 [expr $topidx+1] CPK 1.0 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface 0.008 1 0 0 1 1
+mol modcolor 1 [expr $topidx+1] Volume 0
 mol scaleminmax 0 1 0.0 1.5
 }

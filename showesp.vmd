@@ -67,6 +67,7 @@ proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     incr k
     }
     $sel delete
+    puts  "unit = kcal/mol"
 }
 }
 
@@ -129,5 +130,6 @@ proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     incr k
     }
     $sel delete
+    puts  "unit = kcal/mol"
 }
 }

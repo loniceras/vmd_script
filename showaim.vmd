@@ -17,8 +17,9 @@ puts "cptype = all / no / 3n3 / 3n1 / 3p1 / 3p3"
 set CPsize 0.07
 set pathsize 0.02
 
+#Load critical points
 mol new CPs.pdb
-#Set color for (3,-3)
+#Load and set (3,-3)
 mol modselect 0 0 name C
 mol modstyle 0 0 VDW $CPsize 22.0
 mol modcolor 0 0 ColorID 11

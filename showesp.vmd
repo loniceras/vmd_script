@@ -9,6 +9,7 @@ display depthcue off
 display rendermode GLSL
 light 2 on
 light 3 on
+color Element C silver
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
@@ -89,7 +90,10 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode Normal
+color Element C silver
 material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
 
 proc helpp {} {
 puts "Available Commands: labcp cptype"

@@ -8,12 +8,13 @@ display depthcue off
 display rendermode GLSL
 light 2 off
 light 3 on
+color Element C silver
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
 proc helpp {} {
-puts "Available Commands: labcp cptype, basinadd bbasin ebasin, basindel"
+puts "Available Commands: labcp cptype, basinadd basinb basine, basindel"
 puts "cptype = all / no / 3n3 / 3n1 / 3p1 / 3p3"
 }
 
@@ -58,8 +59,8 @@ mol modcolor 0 [expr $topidx+3] Element
 mol off [expr $topidx+3]
 
 #Load basins
-proc basinadd {bbasin ebasin} {
-    for {set i $bbasin} {$i<=$ebasin} {incr i} {
+proc basinadd {basinb basine} {
+    for {set i $basinb} {$i<=$basine} {incr i} {
     mol new basin[format %04d $i].cub
     mol modstyle 0 top Isosurface 1 0 0 0 1 1
     mol modcolor 0 top ColorID 12
@@ -75,7 +76,7 @@ proc basindel {} {
 
 #Add labels
 proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
-    set cpinx [expr [molinfo top]-2]
+    set cpinx [expr [molinfo top]-[molinfo num]+1]
     label delete Atoms all
     if {$cptype=="no"} {return}
     color Labels Atoms blue

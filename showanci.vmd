@@ -8,6 +8,7 @@ axes location off
 display depthcue off
 light 2 off
 light 3 on
+color Element C silver
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
@@ -41,6 +42,7 @@ axes location off
 display depthcue off
 light 2 off
 light 3 on
+color Element C silver
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
@@ -74,6 +76,7 @@ axes location off
 display depthcue off
 light 2 off
 light 3 on
+color Element C silver
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
@@ -107,6 +110,7 @@ axes location off
 display depthcue off
 light 2 off
 light 3 on
+color Element C silver
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000

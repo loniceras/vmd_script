@@ -10,11 +10,15 @@ display rendermode GLSL
 light 2 off
 light 3 on
 material change specular Opaque 0.200000
+material change ambient Glossy 0.100000
+material change diffuse Glossy 0.600000
+material change shininess Glossy 1.000000
+material change opacity Glossy 0.750000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
 proc helpp {} {
-puts "Available Commands: labcp cptype, aptscale colorlow colorhigh"
+puts "Available Commands: labcp cptype, aptscale colorlow colorhigh, orbadd orbb orbe, orbdel"
 puts "cptype = apt / no / name"
 }
 
@@ -39,9 +43,29 @@ proc aptscale {colorlow colorhigh} {
     mol scaleminmax $molidx 0 $colorlow $colorhigh
 }
 
+#Load orbitals
+proc orbadd {orbb orbe} {
+    for {set i $orbb} {$i<=$orbe} {incr i} {
+    mol new orb[format %06d $i].cub
+    mol modstyle 0 top Isosurface 0.05 0 0 0 1 1
+    mol modcolor 0 top ColorID 12
+    mol modmaterial 0 top Glossy
+    mol addrep top
+    mol modstyle 1 top Isosurface -0.05 0 0 0 1 1
+    mol modcolor 1 top ColorID 22
+    mol modmaterial 1 top Glossy
+    }
+}
+proc orbdel {} {
+    set molidx [expr [molinfo top]-[molinfo num]+2]
+    for {set imol $molidx} {[molinfo num]>1} {incr imol} {
+    mol delete $imol
+    }
+}
+
 #Add labels
 proc labcp {cptype {labsize 1.8} {offsetx 0.25} {offsety 0.0}} {
-    set molidx [molinfo top]
+    set molidx [expr [molinfo top]-[molinfo num]+1]
     label delete Atoms all
     if {$cptype=="no"} {return}
     color Labels Atoms black

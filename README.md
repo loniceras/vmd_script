@@ -48,3 +48,9 @@ These VMD 1.9.3 scripts are used to draw beautiful Multiwfn graphs. Most of scri
 | 20 aRDG analysis      | `ardgtfi`    | thermflu.cub, dg_intra.cub                |
 | 20 aIGM analysis      | `aigm`       | avgsl2r.cub, avgdg_inter.cub              |
 | 20 aIGM analysis      | `aigmtfi`    | thermflu.cub, avgdg_inter.cub             |
+
+## Useful Tips
+- Use the command `helpp` to get commands available in the current script.
+- In some scripts, the display styles (color, materials), isosurface values, lower and upper limits of color scale can be changed via commands, using `helpp` for more information.
+- In some scripts, the labels can be added via commands like `labcp all` and removed via command `labcp no`. Some useful information such as critical point indexes, atoms properties, ESP extrema, ALIE extrema, LEA extrema are given in the labels.
+- In some scripts, orbitals can be added via commands like `orbadd 1 3` and removed via command `orbdel`. In some scripts, basins can be added via commands like `basinadd 1 3` and removed via command `basindel`.

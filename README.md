@@ -53,5 +53,7 @@ These VMD 1.9.3 scripts are used to draw beautiful Multiwfn graphs. Most of scri
 - Use the command `helpp` to get commands available in the current script.
 - In some scripts, the display styles (colors, materials), isosurface values, lower and upper limits of color scale can be changed via commands, using `helpp` for more information.
 - In some scripts, the labels can be added via commands like `labcp all` and removed via command `labcp no`. Some useful information such as critical point indexes, atoms properties, ESP extrema, ALIE extrema, LEA extrema are given in the labels.
-- In script `apt xxx`, orbitals can be added via commands like `orbadd 1 3` and removed via command `orbdel`.
-- In script `aim` and `basin`, basins can be added via commands like `basinadd 1 3` and removed via command `basindel`.
+- In script `apt xxx`, cubes can be added via commands like `cubadd cubname` and removed via command `cubdel`. Files request: cubname.cub
+- In script `apt xxx`, orbitals can be added via commands like `orbadd 1 3` and removed via command `orbdel`. Files request: orb000001.cub, orb000002.cub, orb000003.cub
+- In script `aim` and `basin`, basins can be added via commands like `basinadd 1 3` and removed via command `basindel`. Files request: basin0001.cub, basin0002.cub, basin0003.cub
+- In script `rdg`, `iri`, `dori`, `igminter`, and `igmintra`, critical points and topology paths can be added via commands `aimadd`. Files request: CPs.pdb, paths.pdb

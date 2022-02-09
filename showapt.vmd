@@ -18,7 +18,7 @@ material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
 proc helpp {} {
-puts "Available Commands: labcp cptype, aptscale colorlow colorhigh, orbadd orbb orbe, orbdel"
+puts "Available Commands: labcp cptype, aptscale colorlow colorhigh, cubadd cubname, cubdel, orbadd orbb orbe, orbdel"
 puts "cptype = apt / no / name"
 }
 
@@ -41,6 +41,24 @@ mol scaleminmax [expr $topidx+1] 0 $colorlow $colorhigh
 proc aptscale {colorlow colorhigh} {
     set molidx [molinfo top]
     mol scaleminmax $molidx 0 $colorlow $colorhigh
+}
+
+#Load cubes
+proc orbadd {cubname} {
+    mol new $cubname.cub
+    mol modstyle 0 top Isosurface 0.05 0 0 0 1 1
+    mol modcolor 0 top ColorID 12
+    mol modmaterial 0 top Glossy
+    mol addrep top
+    mol modstyle 1 top Isosurface -0.05 0 0 0 1 1
+    mol modcolor 1 top ColorID 22
+    mol modmaterial 1 top Glossy
+}
+proc cubdel {} {
+    set molidx [expr [molinfo top]-[molinfo num]+2]
+    for {set imol $molidx} {[molinfo num]>1} {incr imol} {
+    mol delete $imol
+    }
 }
 
 #Load orbitals

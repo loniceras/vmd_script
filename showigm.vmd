@@ -15,7 +15,7 @@ material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
 proc helpp {} {
-puts "No Available Commands"
+puts "Available Commands: aimadd"
 }
 
 set topidx [molinfo top]
@@ -31,6 +31,39 @@ mol addrep [expr $topidx+1]
 mol modstyle 1 [expr $topidx+1] Isosurface 0.01000 1 0 0 1 1
 mol modcolor 1 [expr $topidx+1] Volume 0
 mol scaleminmax [expr $topidx+1] 1 -0.05 0.05
+
+#Load CPs and Topology Paths
+proc aimadd {} {
+    set cpidx [expr [molinfo top]+1]
+    #Point size and path size
+    set CPsize 0.07
+    set pathsize 0.02
+    #Load critical points
+    mol new CPs.pdb
+    #Load and set (3,-3)
+    mol modselect 0 $cpidx name C
+    mol modstyle 0 $cpidx VDW $CPsize 22.0
+    mol modcolor 0 $cpidx ColorID 11
+    #Load and set (3,-1)
+    mol addrep $cpidx
+    mol modselect 1 $cpidx name N
+    mol modstyle 1 $cpidx VDW $CPsize 22.0
+    mol modcolor 1 $cpidx ColorID 3
+    #Load and set (3,+1)
+    mol addrep $cpidx
+    mol modselect 2 $cpidx name O
+    mol modstyle 2 $cpidx VDW $CPsize 22.0
+    mol modcolor 2 $cpidx ColorID 4
+    #Load and set (3,+3)
+    mol addrep $cpidx
+    mol modselect 3 $cpidx name F
+    mol modstyle 3 $cpidx VDW $CPsize 22.0
+    mol modcolor 3 $cpidx ColorID 7
+    #Load and set topology paths
+    mol new paths.pdb
+    mol modstyle 0 [expr $cpidx+1] VDW $pathsize 22.0
+    mol modcolor 0 [expr $cpidx+1] ColorID 32
+}
 }
 
 proc igmintra {} {
@@ -50,7 +83,7 @@ material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
 proc helpp {} {
-puts "No Available Commands"
+puts "Available Commands: aimadd"
 }
 
 set topidx [molinfo top]
@@ -66,4 +99,37 @@ mol addrep [expr $topidx+1]
 mol modstyle 1 [expr $topidx+1] Isosurface 0.2000 1 0 0 1 1
 mol modcolor 1 [expr $topidx+1] Volume 0
 mol scaleminmax [expr $topidx+1] 1 -0.05 0.05
+
+#Load CPs and Topology Paths
+proc aimadd {} {
+    set cpidx [expr [molinfo top]+1]
+    #Point size and path size
+    set CPsize 0.07
+    set pathsize 0.02
+    #Load critical points
+    mol new CPs.pdb
+    #Load and set (3,-3)
+    mol modselect 0 $cpidx name C
+    mol modstyle 0 $cpidx VDW $CPsize 22.0
+    mol modcolor 0 $cpidx ColorID 11
+    #Load and set (3,-1)
+    mol addrep $cpidx
+    mol modselect 1 $cpidx name N
+    mol modstyle 1 $cpidx VDW $CPsize 22.0
+    mol modcolor 1 $cpidx ColorID 3
+    #Load and set (3,+1)
+    mol addrep $cpidx
+    mol modselect 2 $cpidx name O
+    mol modstyle 2 $cpidx VDW $CPsize 22.0
+    mol modcolor 2 $cpidx ColorID 4
+    #Load and set (3,+3)
+    mol addrep $cpidx
+    mol modselect 3 $cpidx name F
+    mol modstyle 3 $cpidx VDW $CPsize 22.0
+    mol modcolor 3 $cpidx ColorID 7
+    #Load and set topology paths
+    mol new paths.pdb
+    mol modstyle 0 [expr $cpidx+1] VDW $pathsize 22.0
+    mol modcolor 0 [expr $cpidx+1] ColorID 32
+}
 }

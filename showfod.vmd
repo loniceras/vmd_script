@@ -1,0 +1,88 @@
+proc fod {filename} {
+#This script is used to draw fractional orbital density plot
+#filename.eldens.cube should be presented in current folder
+
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+light 2 off
+light 3 on
+
+color Element C silver
+material change specular Opaque 0.200000
+material change ambient Glossy 0.100000
+material change diffuse Glossy 0.600000
+material change shininess Glossy 1.000000
+material change opacity Glossy 0.750000
+material change outline EdgyGlass 0.300000
+material change outlinewidth EdgyGlass 0.300000
+material change ambient Goodsell 0.500000
+material change diffuse Goodsell 0.400000
+material change specular Goodsell 0.000000
+material change shininess Goodsell 0.000000
+material change opacity Goodsell 0.700000
+material change outline Goodsell 0.300000
+material change outlinewidth Goodsell 0.300000
+
+proc helpp {} {
+puts "Available Commands: fodiso isoval, style maternum colornum"
+puts "maternum = 1 / 2 / 3"
+puts "colornum = 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10"
+}
+
+set topidx [molinfo top]
+foreach i [molinfo list] {
+mol delete $i
+}
+
+#Isosurface value
+set isoval 0.005
+
+mol new $filename.eldens.cube
+mol modstyle 0 top CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 top Element
+mol modmaterial 0 top Opaque
+mol addrep top
+mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
+mol modcolor 1 top ColorID 12
+mol modmaterial 1 top Glossy
+
+#Modify isosurface value
+proc fodiso {isoval} {
+    mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
+}
+
+#Modify style
+proc style {maternum colornum} {
+    if {$maternum=="1"} {
+        material change specular Opaque 0.200000
+        mol modmaterial 1 top Glossy}
+    if {$maternum=="2"} {
+        material change specular Opaque 0.100000
+        mol modmaterial 1 top EdgyGlass}
+    if {$maternum=="3"} {
+        material change specular Opaque 0.000000
+        mol modmaterial 1 top Goodsell}
+    if {$colornum=="1"} {
+        color change rgb 12 0.300000 0.300000 0.300000}
+    if {$colornum=="2"} {
+        color change rgb 12 0.500000 0.500000 0.500000}
+    if {$colornum=="3"} {
+        color change rgb 22 0.950000 0.950000 0.950000}
+    if {$colornum=="4"} {
+        color change rgb 12 0.700000 0.700000 0.900000}
+    if {$colornum=="5"} {
+        color change rgb 12 0.700000 0.900000 0.900000}
+    if {$colornum=="6"} {
+        color change rgb 12 0.700000 0.900000 0.700000}
+    if {$colornum=="7"} {
+        color change rgb 12 0.900000 0.900000 0.700000}
+    if {$colornum=="8"} {
+        color change rgb 12 0.900000 0.700000 0.700000}
+    if {$colornum=="9"} {
+        color change rgb 12 0.900000 0.700000 0.900000}
+    if {$colornum=="10"} {
+        color change rgb 12 0.500000 0.900000 0.400000}
+}
+}

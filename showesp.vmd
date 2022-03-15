@@ -153,3 +153,51 @@ proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
     puts  "unit = kcal/mol"
 }
 }
+
+proc vdwp {} {
+#This script is used to draw molecular van der Waals potential isosurface
+#vdW.cub should be presented in current folder
+
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+light 2 on
+light 3 on
+color Element C silver
+material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.200000
+color change rgb 12 0.700000 0.900000 0.700000
+color change rgb 22 0.650000 0.850000 1.000000
+
+proc helpp {} {
+puts "Available Commands: vdwpiso isoval"
+}
+
+set topidx [molinfo top]
+foreach i [molinfo list] {
+mol delete $i
+}
+
+#Isosurface value
+set isoval 1.0
+
+mol new vdW.cub
+mol modstyle 0 top CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 top Element
+mol addrep top
+mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
+mol modcolor 1 top ColorID 12
+mol modmaterial 1 top EdgyGlass
+mol addrep top
+mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
+mol modcolor 2 top ColorID 22
+mol modmaterial 2 top EdgyGlass
+
+#Modify isosurface value
+proc vdwpiso {isoval} {
+    mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
+    mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
+}
+}

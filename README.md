@@ -35,6 +35,7 @@ These VMD 1.9.3 scripts are used to draw beautiful graphs on wavefunction analys
 | view FOD plot         | `fod xxx`    | xxx.eldens.cube                           |
 | View ESP surface      | `esp`        | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | View ESP surface      | `esppt`      | mol.pdb, vtx.pdb, surfanalysis.pdb        |
+| View vdWP surface     | `vdwp`       | vdW.pdb                                   |
 | View ALIE surface     | `alie`       | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | View LEA surface      | `lea`        | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | View Hirshfeld surface| `hirshd`     | mapfunc.cub, surf.cub                     |

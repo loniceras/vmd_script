@@ -16,7 +16,7 @@ material change specular EdgyGlass 0.200000
 
 proc helpp {} {
 puts "Available Commands: labcp cptype"
-puts "cptype = all / no / max"
+puts "cptype = all / no / max / min"
 }
 
 #Lower and upper limits of color scale of ALIE (a.u.)
@@ -92,7 +92,7 @@ material change specular EdgyGlass 0.200000
 
 proc helpp {} {
 puts "Available Commands: labcp cptype"
-puts "cptype = all / no / min"
+puts "cptype = all / no / max / min"
 }
 
 #Lower and upper limits of color scale of LEA (a.u.)

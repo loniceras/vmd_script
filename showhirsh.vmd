@@ -1,6 +1,6 @@
 proc hirshd {} {
 #This script is used to draw normalized contact distance d_norm colored molecular Hirshfeld isosurface
-#mapfunc.cub, surf.cub should be presented in current folder
+#mapfunc.cub, surf.cub, surfanalysis.pdb should be presented in current folder
 
 color scale method BWR
 color Display Background white
@@ -15,7 +15,8 @@ material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
 proc helpp {} {
-puts "No Available Commands"
+puts "Available Commands: labcp cptype"
+puts "cptype = all / no / max / min"
 }
 
 #Lower and upper limits of color scale of d_norm
@@ -29,17 +30,52 @@ mol delete $i
 
 mol new mapfunc.cub
 mol addfile surf.cub
-mol modstyle 0 [expr $topidx+1] Licorice 0.2 17.0 17.0
+mol modstyle 0 [expr $topidx+1] Licorice 0.2 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
 mol addrep [expr $topidx+1]
 mol modstyle 1 [expr $topidx+1] Isosurface 0.5 1 0 0 1 1
 mol modmaterial 1 [expr $topidx+1] EdgyGlass
 mol modcolor 1 [expr $topidx+1] Volume 0
 mol scaleminmax [expr $topidx+1] 1 $colorlow $colorhigh
+
+#Load surfanalysis.pdb to show ESP extrema on vdW surface
+mol new surfanalysis.pdb
+mol modstyle 0 [expr $topidx+2] VDW 0.07 20
+mol modselect 0 [expr $topidx+2] name C
+mol modcolor 0 [expr $topidx+2] ColorID 32
+mol addrep [expr $topidx+2]
+mol modstyle 1 [expr $topidx+2] VDW 0.07 20
+mol modselect 1 [expr $topidx+2] name O
+mol modcolor 1 [expr $topidx+2] ColorID 21
+#mol off [expr $topidx+2]
+
+#Add labels
+proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
+    set cpinx [molinfo top]
+    label delete Atoms all
+    if {$cptype=="no"} {return}
+    color Labels Atoms black
+    label textthickness 2.000000
+    label textsize $labsize
+    set atmsel "name O"
+    if {$cptype=="all"} {set atmsel all}
+    if {$cptype=="max"} {set atmsel "name C"}
+    set sel [atomselect $cpinx $atmsel]
+    set k 0
+    foreach i [$sel list] {
+    label add Atoms $cpinx/$i
+    label textformat Atoms $k { %b }
+    label textoffset Atoms $k "$offsetx $offsety"
+    incr k
+    }
+    $sel delete
+    puts  "unit = a.u."
+}
 }
 
 proc hirshr {} {
 #This script is used to draw electron density ρ colored molecular Hirshfeld isosurface
-#mapfunc.cub, surf.cub should be presented in current folder
+#mapfunc.cub, surf.cub, surfanalysis.pdb should be presented in current folder
 
 color scale method BWR
 color Display Background white
@@ -54,7 +90,8 @@ material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
 
 proc helpp {} {
-puts "No Available Commands"
+puts "Available Commands: labcp cptype"
+puts "cptype = all / no / max / min"
 }
 
 #Lower and upper limits of color scale of ρ
@@ -67,10 +104,57 @@ mol delete $i
 
 mol new mapfunc.cub
 mol addfile surf.cub
-mol modstyle 0 [expr $topidx+1] Licorice 0.2 17.0 17.0
+mol modstyle 0 [expr $topidx+1] Licorice 0.2 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
 mol addrep [expr $topidx+1]
 mol modstyle 1 [expr $topidx+1] Isosurface 0.5 1 0 0 1 1
 mol modmaterial 1 [expr $topidx+1] EdgyGlass
 mol modcolor 1 [expr $topidx+1] Volume 0
 mol scaleminmax [expr $topidx+1] 1 0.0 $colorhigh
+
+#Load surfanalysis.pdb to show ESP extrema on vdW surface
+mol new surfanalysis.pdb
+mol modstyle 0 [expr $topidx+2] VDW 0.07 20
+mol modselect 0 [expr $topidx+2] name C
+mol modcolor 0 [expr $topidx+2] ColorID 32
+mol addrep [expr $topidx+2]
+mol modstyle 1 [expr $topidx+2] VDW 0.07 20
+mol modselect 1 [expr $topidx+2] name O
+mol modcolor 1 [expr $topidx+2] ColorID 21
+#mol off [expr $topidx+2]
+
+#Add labels
+proc labcp {cptype {labsize 1.8} {offsetx -0.05} {offsety 0.0}} {
+    set cpinx [molinfo top]
+    label delete Atoms all
+    if {$cptype=="no"} {return}
+    color Labels Atoms black
+    label textthickness 2.000000
+    label textsize $labsize
+    set atmsel "name C"
+    if {$cptype=="all"} {set atmsel all}
+    if {$cptype=="min"} {set atmsel "name O"}
+    set sel [atomselect $cpinx $atmsel]
+    set k 0
+    foreach i [$sel list] {
+    label add Atoms $cpinx/$i
+    label textformat Atoms $k { %b }
+    label textoffset Atoms $k "$offsetx $offsety"
+    incr k
+    }
+    $sel delete
+    puts  "unit = a.u."
+}
+}
+
+proc becked {} {
+#This script is used to draw normalized contact distance d_norm colored molecular Becke isosurface
+#mapfunc.cub, surf.cub, surfanalysis.pdb should be presented in current folder
+hirshd
+}
+
+proc becker {} {
+#This script is used to draw electron density ρ colored molecular Becke isosurface
+#mapfunc.cub, surf.cub, surfanalysis.pdb should be presented in current folder
+hirshr
 }

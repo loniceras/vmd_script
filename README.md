@@ -38,8 +38,10 @@ These VMD 1.9.3 scripts are used to draw beautiful graphs on wavefunction analys
 | View vdWP surface     | `vdwp`       | vdW.cub                                   |
 | View ALIE surface     | `alie`       | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | View LEA surface      | `lea`        | mapfunc.cub, surf.cub, surfanalysis.pdb   |
-| View Hirshfeld surface| `hirshd`     | mapfunc.cub, surf.cub                     |
-| View Hirshfeld surface| `hirshr`     | mapfunc.cub, surf.cub                     |
+| View Hirshfeld surface| `hirshd`     | mapfunc.cub, surf.cub, surfanalysis.pdb   |
+| View Hirshfeld surface| `hirshr`     | mapfunc.cub, surf.cub, surfanalysis.pdb   |
+| View Becke surface    | `becked`     | mapfunc.cub, surf.cub, surfanalysis.pdb   |
+| View Becke surface    | `becker`     | mapfunc.cub, surf.cub, surfanalysis.pdb   |
 | View Basins           | `basin`      | mol.pdb, attractors.pqr                   |
 | AIM topology analysis | `aim`        | mol.pdb, CPs.pdb, paths.pdb               |
 | RDG analysis          | `rdg`        | func1.cub, func2.cub                      |
@@ -55,7 +57,7 @@ These VMD 1.9.3 scripts are used to draw beautiful graphs on wavefunction analys
 ## Useful Tips
 - Use the command `helpp` to get commands available in the current script.
 - In some scripts, the display styles (colors, materials), isosurface values, lower and upper limits of color scale can be changed via commands, using `helpp` for more information.
-- In some scripts, the labels can be added via commands like `labcp all` and removed via command `labcp no`. Some useful information such as critical point indexes, atoms properties, ESP extrema, ALIE extrema, LEA extrema are given in the labels.
+- In some scripts, the labels can be added via commands like `labcp all` and removed via command `labcp no`. Some useful information such as critical point indexes, atoms properties, ESP extrema, ALIE extrema, LEA extrema, Hirshfeld surface extrema, Becke surface extrema are given in the labels.
 - In script `apt xxx`, cubes can be added via commands like `cubadd cubname` and removed via command `cubdel`. Files request: cubname.cub
 - In script `apt xxx`, orbitals can be added via commands like `orbadd 1 3` and removed via command `orbdel`. Files request: orb000001.cub, orb000002.cub, orb000003.cub
 - In script `aim` and `basin`, basins can be added via commands like `basinadd 1 3` and removed via command `basindel`. Files request: basin0001.cub, basin0002.cub, basin0003.cub

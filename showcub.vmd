@@ -6,7 +6,7 @@ color Display Background white
 axes location off
 display depthcue off
 display rendermode GLSL
-light 3 off
+light 2 off
 light 3 on
 
 color Element C silver

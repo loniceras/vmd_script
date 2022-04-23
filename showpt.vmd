@@ -1,0 +1,45 @@
+proc pt {filename {resid 754}} {
+#This script is used to view protein
+#filename should be presented in current folder
+
+color Display Background white
+axes location off
+display depthcue off
+display rendermode GLSL
+light 3 off
+light 3 on
+color Element C silver
+material change specular Opaque 0.200000
+material change transmode EdgyGlass 1.000000
+material change specular EdgyGlass 0.000000
+material change shininess EdgyGlass 1.000000
+material change opacity EdgyGlass 1.000000
+material change outline EdgyGlass 0.000000
+material change outlinewidth EdgyGlass 0.000000
+color change rgb 8 1.000000 1.000000 1.000000
+color change rgb 12 0.700000 0.900000 0.700000
+
+proc helpp {} {
+puts "No Available Commands"
+}
+
+foreach i [molinfo list] {
+mol delete $i
+}
+
+mol new $filename
+mol modselect 0 top all
+mol modstyle 0 top NewCartoon 0.3 22.0 4.1 22.0
+mol modcolor 0 top ColorID 12
+mol modmaterial 0 top Glossy
+mol addrep top
+mol modselect 1 top (all and resid $resid)
+mol modstyle 1 top Licorice 0.3 22.0 22.0
+mol modcolor 1 top Element
+mol modmaterial 1 top Glossy
+mol addrep top
+mol modselect 2 top (all and not protein and not water)
+mol modstyle 2 top Licorice 0.3 22.0 22.0
+mol modcolor 2 top Element
+mol modmaterial 2 top Glossy
+}

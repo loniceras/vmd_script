@@ -33,6 +33,7 @@ mol modcolor 0 [expr $topidx+1] ColorID 11
 #Load molecular structure
 mol new mol.pdb
 mol modstyle 0 [expr $topidx+2] CPK 0.7 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+2] Element
 
 #Load basins
 proc basinadd {basinb basine} {

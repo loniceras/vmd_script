@@ -52,7 +52,7 @@ proc basindel {} {
 }
 
 #Add labels
-proc labcp {cptype {labsize 1.8} {offsetx 0.15} {offsety 0.0}} {
+proc labcp {cptype {labsize 0.9} {offsetx 0.05} {offsety 0.0}} {
     set cpinx [expr [molinfo top]-[molinfo num]+1]
     label delete Atoms all
     if {$cptype=="no"} {return}

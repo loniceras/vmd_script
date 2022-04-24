@@ -82,7 +82,7 @@ proc orbdel {} {
 }
 
 #Add labels
-proc labcp {cptype {labsize 1.8} {offsetx 0.25} {offsety 0.0}} {
+proc labcp {cptype {labsize 0.9} {offsetx 0.11} {offsety 0.0}} {
     set molidx [expr [molinfo top]-[molinfo num]+1]
     label delete Atoms all
     if {$cptype=="no"} {return}

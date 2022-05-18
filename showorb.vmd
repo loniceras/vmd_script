@@ -10,6 +10,7 @@ light 2 off
 light 3 on
 
 color Element C silver
+color change rgb 6 0.800000 0.800000 0.800000
 material change specular Opaque 0.200000
 material change ambient Glossy 0.100000
 material change diffuse Glossy 0.600000

@@ -39,7 +39,7 @@ mol modcolor 0 [expr $topidx+2] Element
 proc basinadd {basinb basine} {
     for {set i $basinb} {$i<=$basine} {incr i} {
     mol new basin[format %04d $i].cub
-    mol modstyle 0 top Isosurface 1 0 0 0 1 1
+    mol modstyle 0 top Isosurface 0.999999 0 0 0 1 1
     mol modcolor 0 top ColorID 12
     mol modmaterial 0 top Transparent
     }
@@ -53,7 +53,7 @@ proc basindel {} {
 
 #Add labels
 proc labcp {cptype {labsize 0.9} {offsetx 0.05} {offsety 0.0}} {
-    set cpinx [expr [molinfo top]-[molinfo num]+1]
+    set cpinx [expr [molinfo index 0]]
     label delete Atoms all
     if {$cptype=="no"} {return}
     color Labels Atoms black

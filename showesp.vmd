@@ -10,6 +10,7 @@ display rendermode GLSL
 light 2 on
 light 3 on
 color Element C silver
+color change rgb 6 0.800000 0.800000 0.800000
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
@@ -91,6 +92,7 @@ axes location off
 display depthcue off
 display rendermode Normal
 color Element C silver
+color change rgb 6 0.800000 0.800000 0.800000
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000
@@ -165,6 +167,7 @@ display rendermode GLSL
 light 2 on
 light 3 on
 color Element C silver
+color change rgb 6 0.800000 0.800000 0.800000
 material change specular Opaque 0.200000
 material change transmode EdgyGlass 1.000000
 material change specular EdgyGlass 0.200000

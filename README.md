@@ -7,6 +7,7 @@ These VMD 1.9.3 scripts are used to draw beautiful graphs on wavefunction analys
     ```
     source showcub.vmd
     source showapt.vmd
+    source showpole.vmd
     source showvib.vmd
     source showorb.vmd
     source showfod.vmd
@@ -21,8 +22,8 @@ These VMD 1.9.3 scripts are used to draw beautiful graphs on wavefunction analys
     ```
 
 ## Basic Usage
-1. Generate required cub/pdb/pqr/xyz files by Multiwfn/ORCA.
-2. Move those cub/pdb/pqr/xyz files to the installation directory of VMD 1.9.3.
+1. Generate required cub/pdb/pqr/xyz/txt files by Multiwfn/ORCA.
+2. Move those cub/pdb/pqr/xyz/txt files to the installation directory of VMD 1.9.3.
 3. Open a new VMD window.
 4. Input required command in VMD Command-Line Window.
 
@@ -30,6 +31,8 @@ These VMD 1.9.3 scripts are used to draw beautiful graphs on wavefunction analys
 | --------------------- | ------------ | ----------------------------------------- |
 | View cub file         | `cub xxx`    | xxx.cub                                   |
 | View atom properties  | `apt xxx`    | xxx.pqr                                   |
+| View atom dipole      | `dip xxx`    | xxx.xyz, multiple.txt, atom_moment.txt    |
+| View atom quadrupole  | `quadp xxx`  | xxx.xyz, multiple.txt, atom_moment.txt    |
 | View vibration modes  | `vib xxx n`  | xxx.xyz, xxx.out                          |
 | View orbitals         | `orb`        | orbital.cub                               |
 | view FOD plot         | `fod xxx`    | xxx.eldens.cube                           |

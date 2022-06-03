@@ -187,20 +187,21 @@ mol delete $i
 set isoval 1.0
 
 mol new vdW.cub
-mol modstyle 0 top CPK 0.8 0.3 22.0 22.0
-mol modcolor 0 top Element
-mol addrep top
-mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
-mol modcolor 1 top ColorID 12
-mol modmaterial 1 top EdgyGlass
-mol addrep top
-mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
-mol modcolor 2 top ColorID 22
-mol modmaterial 2 top EdgyGlass
+mol modstyle 0 [expr $topidx+1] CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 [expr $topidx+1] Element
+mol addrep [expr $topidx+1]
+mol modstyle 1 [expr $topidx+1] Isosurface $isoval 0 0 0 1 1
+mol modcolor 1 [expr $topidx+1] ColorID 12
+mol modmaterial 1 [expr $topidx+1] EdgyGlass
+mol addrep [expr $topidx+1]
+mol modstyle 2 [expr $topidx+1] Isosurface -$isoval 0 0 0 1 1
+mol modcolor 2 [expr $topidx+1] ColorID 22
+mol modmaterial 2 [expr $topidx+1] EdgyGlass
 
 #Modify isosurface value
 proc vdwpiso {isoval} {
-    mol modstyle 1 top Isosurface $isoval 0 0 0 1 1
-    mol modstyle 2 top Isosurface -$isoval 0 0 0 1 1
+    set molidx [molinfo top]
+    mol modstyle 1 $molidx Isosurface $isoval 0 0 0 1 1
+    mol modstyle 2 $molidx Isosurface -$isoval 0 0 0 1 1
 }
 }

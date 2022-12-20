@@ -55,6 +55,7 @@ mol delete $i
 
 mol new $filename.xyz
 mol modstyle 0 top CPK 0.8 0.3 22.0 22.0
+mol modcolor 0 top Element
 
 set ilinear 0
 if {[info exist x]} {unset x}
